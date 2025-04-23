@@ -1,0 +1,50 @@
+package com.senna.asaas_spring_sdk.payment.dto;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+
+public record PaymentCreateResponse(
+        String id,
+        LocalDate dateCreated,
+        String customer,
+        String subscription,
+        String installment,
+        String paymentLink,
+        BigDecimal value,
+        BigDecimal netValue,
+        BigDecimal originalValue,
+        BigDecimal interestValue,
+        String description,
+        String billingType,
+        PaymentCreditCard creditCard,
+        Boolean canBePaidAfterDueDate,
+        String pixTransaction,
+        String pixQrCodeId,
+        String status,
+        LocalDate dueDate,
+        LocalDate originalDueDate,
+        LocalDate paymentDate,
+        LocalDate clientPaymentDate,
+        Integer installmentNumber,
+        String invoiceUrl,
+        String invoiceNumber,
+        String externalReference,
+        Boolean deleted,
+        Boolean anticipated,
+        Boolean anticipable,
+        LocalDate creditDate,
+        LocalDate estimatedCreditDate,
+        String transactionReceiptUrl,
+        String nossoNumero,
+        String bankSlipUrl,
+        PaymentDiscount discount,
+        PaymentFine fine,
+        PaymentInterest interest,
+        List<PaymentSplit> split,
+        Boolean postalService,
+        Integer daysAfterDueDateToRegistrationCancellation,
+        PaymentChargeback chargeback,
+        PaymentEscrow escrow,
+        List<PaymentRefund> refunds
+) {}
