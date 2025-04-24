@@ -3,8 +3,10 @@ package com.senna.asaas_spring_sdk.credit_card.service;
 import com.senna.asaas_spring_sdk.AsaasWebClient;
 import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardTokenizationRequest;
 import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardTokenizationResponse;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+@Service
 public class AsaasCreditCardService {
 
     private final AsaasWebClient asaasWebClient;

@@ -1,9 +1,12 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 
-public record PaymentRefundSplit(
-        String id,
-        BigDecimal value,
-        Boolean done
-) {}
+@Data
+public class PaymentRefundSplit {
+    String id;
+    BigDecimal value;
+    Boolean done;
+}

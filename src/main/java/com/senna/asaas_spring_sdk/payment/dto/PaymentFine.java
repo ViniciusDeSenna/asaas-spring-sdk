@@ -1,10 +1,12 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
+import com.senna.asaas_spring_sdk.payment.enums.FineType;
+import lombok.Data;
+
 import java.math.BigDecimal;
 
-public record PaymentFine(
-
-        BigDecimal value,
-
-        FineType type
-) {}
+@Data
+public class PaymentFine {
+    BigDecimal value;
+    FineType type;
+}

@@ -1,14 +1,12 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
-public record PaymentEscrow(
+import lombok.Data;
 
-        String id,
-
-        String status,
-
-        String expirationDate,
-
-        String finishDate,
-
-        String finishReason
-) {}
+@Data
+public class PaymentEscrow {
+    String id;
+    String status;
+    String expirationDate;
+    String finishDate;
+    String finishReason;
+}

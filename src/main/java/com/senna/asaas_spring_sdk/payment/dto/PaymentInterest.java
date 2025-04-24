@@ -1,7 +1,10 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 
-public record PaymentInterest(
-        BigDecimal value
-) {}
+@Data
+public class PaymentInterest {
+    BigDecimal value;
+}

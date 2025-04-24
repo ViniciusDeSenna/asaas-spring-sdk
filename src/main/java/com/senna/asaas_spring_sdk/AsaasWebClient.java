@@ -14,7 +14,7 @@ public class AsaasWebClient {
                 .baseUrl(baseUrl)
                 .defaultHeader("Accept", "application/json")
                 .defaultHeader("Content-Type", "application/json")
-                .defaultHeader("access_token", "Bearer " + apiKey)
+                .defaultHeader("access_token", apiKey)
                 .build();
     }
 

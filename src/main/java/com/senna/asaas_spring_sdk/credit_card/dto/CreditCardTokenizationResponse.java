@@ -1,10 +1,11 @@
 package com.senna.asaas_spring_sdk.credit_card.dto;
 
-public record CreditCardTokenizationResponse(
 
-        String creditCardNumber,
+import lombok.Data;
 
-        String creditCardBrand,
-
-        String creditCardToken
-) {}
+@Data
+public class CreditCardTokenizationResponse {
+    String creditCardNumber;
+    String creditCardBrand;
+    String creditCardToken;
+}

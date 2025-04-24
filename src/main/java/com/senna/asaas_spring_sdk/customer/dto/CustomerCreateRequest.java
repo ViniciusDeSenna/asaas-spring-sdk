@@ -3,48 +3,37 @@ package com.senna.asaas_spring_sdk.customer.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 
-public record CustomerCreateRequest(
+@Data
+public class CustomerCreateRequest {
 
-        @NotBlank(message = "Client name is required")
-        String name,
+    @NotBlank(message = "Client name is required")
+    String name;
 
-        @NotBlank(message = "Customer CPF or CNPJ is required")
-        String cpfCnpj,
+    @NotBlank(message = "Customer CPF or CNPJ is required")
+    String cpfCnpj;
 
-        @Email(message = "Invalid email format")
-        String email,
+    @Email(message = "Invalid email format")
+    String email;
 
-        String phone,
+    String phone;
+    String mobilePhone;
+    String address;
+    String addressNumber;
 
-        String mobilePhone,
+    @Size(max = 255, message = "Address complement must be at most 255 characters")
+    String complement;
 
-        String address,
-
-        String addressNumber,
-
-        @Size(max = 255, message = "Address complement must be at most 255 characters")
-        String complement,
-
-        String province,
-
-        String postalCode,
-
-        String externalReference,
-
-        Boolean notificationDisabled,
-
-        String additionalEmails,
-
-        String municipalInscription,
-
-        String stateInscription,
-
-        String observations,
-
-        String groupName,
-
-        String company,
-
-        Boolean foreignCustomer
-) {}
+    String province;
+    String postalCode;
+    String externalReference;
+    Boolean notificationDisabled;
+    String additionalEmails;
+    String municipalInscription;
+    String stateInscription;
+    String observations;
+    String groupName;
+    String company;
+    Boolean foreignCustomer;
+}

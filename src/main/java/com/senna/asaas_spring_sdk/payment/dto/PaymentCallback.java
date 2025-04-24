@@ -1,10 +1,13 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
-public record PaymentCallback(
+@Data
+public class PaymentCallback {
+
         @NotBlank(message = "Success url is required")
-        String successUrl,
+        String successUrl;
 
-        Boolean autoRedirect
-) {}
+        Boolean autoRedirect;
+}

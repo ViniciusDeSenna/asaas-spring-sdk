@@ -2,18 +2,20 @@ package com.senna.asaas_spring_sdk.credit_card.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
-public record CreditCardTokenizationRequest(
+@Data
+public class CreditCardTokenizationRequest {
 
         @NotBlank(message = "Customer is required")
-        String customer,
+        String customer;
 
         @NotNull(message = "Credit Card is required")
-        CreditCardRequest creditCard,
+        CreditCardRequest creditCard;
 
         @NotNull(message = "Credit card holder info is required")
-        CreditCardHolderInfo creditCardHolderInfo,
+        CreditCardHolderInfo creditCardHolderInfo;
 
         @NotBlank(message = "Remote Ip is required")
-        String remoteIp
-) {}
+        String remoteIp;
+}
