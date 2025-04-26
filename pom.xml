@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.senna</groupId>
 	<artifactId>asaas-spring-sdk</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>asaas-spring-sdk</name>
 	<description>A lightweight and easy-to-use Java SDK for integrating with the Asaas API using Spring Boot. This SDK abstracts common operations like customer management, billing, and subscriptions, making it easier to integrate Asaas into your Java or Spring-based applications.</description>
 	<url/>
