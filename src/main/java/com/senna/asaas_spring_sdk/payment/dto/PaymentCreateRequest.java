@@ -1,5 +1,6 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardRequest;
 import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardHolderInfo;
 import jakarta.validation.constraints.NotBlank;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PaymentCreateRequest {
 
    @NotBlank(message = "Customer is required")
@@ -22,8 +24,8 @@ public class PaymentCreateRequest {
    @NotNull(message = "Value is required")
    BigDecimal value;
 
-   @NotNull(message = "Due date is required")
-   LocalDate dueDate;
+   @NotBlank(message = "Due date is required")
+   String dueDate;
 
    String description;
    Integer daysAfterDueDateToRegistrationCancellation;

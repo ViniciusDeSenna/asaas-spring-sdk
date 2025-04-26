@@ -8,6 +8,7 @@ import java.util.List;
 
 @Data
 public class PaymentCreateResponse {
+    String object;
     String id;
     LocalDate dateCreated;
     String customer;

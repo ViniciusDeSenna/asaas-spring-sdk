@@ -8,8 +8,6 @@ import com.senna.asaas_spring_sdk.customer.dto.CustomerListQuery;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
-import javax.swing.text.html.Option;
-import java.util.List;
 import java.util.Optional;
 
 @Service
