@@ -1,22 +1,21 @@
 package com.senna.asaas_spring_sdk.customer.service;
 
-import com.senna.asaas_spring_sdk.AsaasWebClient;
-import com.senna.asaas_spring_sdk.customer.dto.CustomerCreateRequest;
-import com.senna.asaas_spring_sdk.customer.dto.CustomerCreateResponse;
+import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomer;
+import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerCreateRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AsaasCustomerServiceTest {
+class AsaasAsaasCustomerServiceTest {
 
     @Autowired
     AsaasCustomerService asaasCustomerService;
 
     @Test
     void createNewCustomer() {
-       CustomerCreateRequest request = new CustomerCreateRequest();
+       AsaasCustomerCreateRequest request = new AsaasCustomerCreateRequest();
         request.setName("Test Name");
         request.setCpfCnpj("01234567890");
         request.setEmail("test@test.com");
@@ -37,7 +36,7 @@ class AsaasCustomerServiceTest {
         request.setCompany("Test Company");
         request.setForeignCustomer(false);
 
-        CustomerCreateResponse response = asaasCustomerService.createNewCustomer(request).block();
+        AsaasCustomer response = asaasCustomerService.create(request).block();
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals("Test Name", response.getName());

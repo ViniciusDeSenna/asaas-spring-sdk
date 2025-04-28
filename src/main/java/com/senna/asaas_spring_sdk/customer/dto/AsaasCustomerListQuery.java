@@ -3,9 +3,9 @@ package com.senna.asaas_spring_sdk.customer.dto;
 import lombok.Data;
 
 @Data
-public class CustomerListQuery {
+public class AsaasCustomerListQuery {
 
-    public CustomerListQuery(Integer offset, Integer limit) {
+    public AsaasCustomerListQuery(Integer offset, Integer limit) {
         this.offset = offset;
         this.limit = limit;
     }

@@ -6,10 +6,9 @@ import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardRequest;
 import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardTokenizationRequest;
 import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardTokenizationResponse;
 import com.senna.asaas_spring_sdk.credit_card.service.AsaasCreditCardService;
-import com.senna.asaas_spring_sdk.customer.dto.CustomerList;
-import com.senna.asaas_spring_sdk.customer.dto.CustomerListQuery;
+import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerList;
+import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerListQuery;
 import com.senna.asaas_spring_sdk.customer.service.AsaasCustomerService;
-import com.senna.asaas_spring_sdk.payment.dto.PaymentCallback;
 import com.senna.asaas_spring_sdk.payment.dto.PaymentCreateRequest;
 import com.senna.asaas_spring_sdk.payment.dto.PaymentCreateResponse;
 import com.senna.asaas_spring_sdk.payment.enums.BillingType;
@@ -37,7 +36,7 @@ class AsaasPaymentServiceTest {
     @Test
     void createNewPayment() {
 
-        CustomerList customerList = asaasCustomerService.listCustomers(new CustomerListQuery(0, 1)).block();
+        AsaasCustomerList asaasCustomerList = asaasCustomerService.list(new AsaasCustomerListQuery(0, 1)).block();
 
         CreditCardRequest creditCardRequest = new CreditCardRequest();
         creditCardRequest.setHolderName("TESTE USER");
@@ -56,7 +55,7 @@ class AsaasPaymentServiceTest {
         holderInfo.setPhone("23434344567");
 
         CreditCardTokenizationRequest requestCreditCard = new CreditCardTokenizationRequest();
-        requestCreditCard.setCustomer(customerList.getData().get(0).getId());
+        requestCreditCard.setCustomer(asaasCustomerList.getData().get(0).getId());
         requestCreditCard.setCreditCard(creditCardRequest);
         requestCreditCard.setCreditCardHolderInfo(holderInfo);
         requestCreditCard.setRemoteIp("123");
@@ -64,7 +63,7 @@ class AsaasPaymentServiceTest {
         CreditCardTokenizationResponse responseCreditCard = asaasCreditCardService.tokenization(requestCreditCard).block();
 
         PaymentCreateRequest request = new PaymentCreateRequest();
-        request.setCustomer(customerList.getData().get(0).getId());
+        request.setCustomer(asaasCustomerList.getData().get(0).getId());
         request.setBillingType(BillingType.CREDIT_CARD.toString());
         request.setValue(BigDecimal.valueOf(10.0));
         request.setDueDate(LocalDate.now().toString());

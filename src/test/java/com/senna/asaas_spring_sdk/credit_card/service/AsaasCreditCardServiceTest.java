@@ -4,15 +4,13 @@ import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardHolderInfo;
 import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardRequest;
 import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardTokenizationRequest;
 import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardTokenizationResponse;
-import com.senna.asaas_spring_sdk.customer.dto.CustomerList;
-import com.senna.asaas_spring_sdk.customer.dto.CustomerListQuery;
+import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerList;
+import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerListQuery;
 import com.senna.asaas_spring_sdk.customer.service.AsaasCustomerService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AsaasCreditCardServiceTest {
@@ -26,7 +24,7 @@ class AsaasCreditCardServiceTest {
     @Test
     void tokenization() {
 
-        CustomerList customers = asaasCustomerService.listCustomers(new CustomerListQuery(0, 1)).block();
+        AsaasCustomerList customers = asaasCustomerService.list(new AsaasCustomerListQuery(0, 1)).block();
 
         CreditCardRequest creditCardRequest = new CreditCardRequest();
         creditCardRequest.setHolderName("TESTE USER");

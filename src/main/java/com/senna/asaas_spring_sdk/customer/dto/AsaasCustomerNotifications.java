@@ -5,11 +5,11 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class CustomerList {
+public class AsaasCustomerNotifications {
     String object;
     Boolean hasMore;
     Integer totalCount;
     Integer limit;
     Integer offset;
-    List<Customer> data;
+    List<AsaasCustomerNotification> data;
 }
