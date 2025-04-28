@@ -1,13 +1,6 @@
 package com.senna.asaas_spring_sdk.credit_card.service;
 
-import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardHolderInfo;
-import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardRequest;
-import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardTokenizationRequest;
-import com.senna.asaas_spring_sdk.credit_card.dto.CreditCardTokenizationResponse;
-import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerList;
-import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerListQuery;
 import com.senna.asaas_spring_sdk.customer.service.AsaasCustomerService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

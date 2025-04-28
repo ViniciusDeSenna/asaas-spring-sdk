@@ -31,7 +31,7 @@ public class AsaasCustomerService {
      * [EN]
      * Creates a client by calling the '/clientes' route with the provided data.
      *
-     * @param request Dados do cliente a ser criado | Customer data to be created (AsaasCustomerCreateRequest).
+     * @param request Dados do cliente a ser criado | Customer data to be created (AsaasCustomerCreateRequest,class).
      * @return Um Mono contendo os dados do cliente criado | A Mono containing the data of the created client (AsaasCustomer.class).
      */
     public Mono<AsaasCustomer> create(AsaasCustomerCreateRequest request) {

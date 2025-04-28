@@ -1,6 +1,5 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
-import com.senna.asaas_spring_sdk.credit_card.dto.CreditCard;
 import lombok.Data;
 
 import java.math.BigDecimal;
