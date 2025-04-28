@@ -30,13 +30,17 @@ public class AsaasWebClient {
     }
 
     /**
+     * [PT-BR]
      * Função padrão POST.
+     * |
+     * [EN]
+     * Default POST function.
      *
-     * @param path - Uri da requisição para API.
-     * @param request - Body da requisição para API.
-     * @param responseType - Classe que vai receber a resposta da API (um DTO casualmente).
-     * @return - Retorna entre outras coisas a resposta da API.
-     * @param <T> - Classe que vai receber a resposta da API (um DTO casualmente).
+     * @param path Uri da requisição para API | Request Uri for API.
+     * @param request Corpo da requisição para API | API request body.
+     * @param responseType Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
+     * @return Retorna a resposta da API | Returns the API response.
+     * @param <T> Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
      */
     public <T> Mono<T> post(String path, Object request, Class<T> responseType) {
         return this.getClient()
@@ -52,12 +56,16 @@ public class AsaasWebClient {
     };
 
     /**
+     * [PT-BR]
      * Função padrão POST sem BODY.
+     * |
+     * [EN]
+     * Default POST function without BODY.
      *
-     * @param path - Uri da requisição para API.
-     * @param responseType - Classe que vai receber a resposta da API (um DTO casualmente).
-     * @return - Retorna entre outras coisas a resposta da API.
-     * @param <T> - Classe que vai receber a resposta da API (um DTO casualmente).
+     * @param path Uri da requisição para API | Request Uri for API.
+     * @param responseType Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
+     * @return Retorna a resposta da API | Returns the API response.
+     * @param <T> Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
      */
     public <T> Mono<T> post(String path, Class<T> responseType) {
         return this.getClient()
@@ -72,12 +80,16 @@ public class AsaasWebClient {
     };
 
     /**
+     * [PT-BR]
      * Função padrão GET.
+     * |
+     * [EN]
+     * Default GET function.
      *
-     * @param path - Uri da requisição para API.
-     * @param responseType - Classe que vai receber a resposta da API (um DTO casualmente).
-     * @return - Retorna entre outras coisas a resposta da API.
-     * @param <T> - Classe que vai receber a resposta da API (um DTO casualmente).
+     * @param path Uri da requisição para API | Request Uri for API.
+     * @param responseType Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
+     * @return Retorna a resposta da API | Returns the API response.
+     * @param <T> Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
      */
     public <T> Mono<T> get(String path, Class<T> responseType) {
         return this.getClient()
@@ -92,14 +104,16 @@ public class AsaasWebClient {
     };
 
     /**
-     * Função padrão GET com UriBuilder.
-     * Funciona como a requisição padrão GET porem permite que você monte o path de maneira dinâmica (facilitando o
-     * uso de filtros).
+     * [PT-BR]
+     * Função padrão GET com UriBuilder. Funciona como a requisição padrão GET porem permite que você monte o path de maneira dinâmica (facilitando o uso de filtros).
+     * |
+     * [EN]
+     * Standard GET function with UriBuilder. It works like the standard GET request but allows you to build the path dynamically (making it easier to use filters).
      *
-     * @param uriFunction - Uri da requisição para API.
-     * @param responseType - Classe que vai receber a resposta da API (um DTO casualmente).
-     * @return - Retorna entre outras coisas a resposta da API.
-     * @param <T> - Classe que vai receber a resposta da API (um DTO casualmente).
+     * @param uriFunction Uri da requisição para API | Request Uri for API.
+     * @param responseType Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
+     * @return Retorna a resposta da API | Returns the API response.
+     * @param <T> Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
      */
     public <T> Mono<T> get(Function<UriBuilder, URI> uriFunction, Class<T> responseType) {
         return this.getClient()
@@ -110,12 +124,16 @@ public class AsaasWebClient {
     }
 
     /**
+     * [PT-BR]
      * Função padrão PUT.
+     * |
+     * [EN]
+     * Default PUT function.
      *
-     * @param path - Uri da requisição para API.
-     * @param responseType - Classe que vai receber a resposta da API (um DTO casualmente).
-     * @return - Retorna entre outras coisas a resposta da API.
-     * @param <T> - Classe que vai receber a resposta da API (um DTO casualmente).
+     * @param path Uri da requisição para API | Request Uri for API.
+     * @param responseType Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
+     * @return Retorna a resposta da API | Returns the API response.
+     * @param <T> Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
      */
     public <T> Mono<T> put(String path, Object request, Class<T> responseType) {
         return this.getClient()
@@ -131,12 +149,16 @@ public class AsaasWebClient {
     };
 
     /**
+     * [PT-BR]
      * Função padrão DELETE.
+     * |
+     * [EN]
+     * Default DELETE function.
      *
-     * @param path - Uri da requisição para API.
-     * @param responseType - Classe que vai receber a resposta da API (um DTO casualmente).
-     * @return - Retorna entre outras coisas a resposta da API.
-     * @param <T> - Classe que vai receber a resposta da API (um DTO casualmente).
+     * @param path Uri da requisição para API | Request Uri for API.
+     * @param responseType Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
+     * @return Retorna a resposta da API | Returns the API response.
+     * @param <T> Classe que vai receber a resposta da API (um DTO casualmente) | Class that will receive the response from the API (DTO, by the way).
      */
     public <T> Mono<T> delete(String path, Class<T> responseType) {
         return this.getClient()

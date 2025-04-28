@@ -1,7 +1,5 @@
 package com.senna.asaas_spring_sdk.payment.service;
 
-import com.senna.asaas_spring_sdk.exceptions.AsaasApiException;
-import com.senna.asaas_spring_sdk.exceptions.AsaasApiResponse;
 import com.senna.asaas_spring_sdk.AsaasWebClient;
 import com.senna.asaas_spring_sdk.payment.dto.PaymentCreateRequest;
 import com.senna.asaas_spring_sdk.payment.dto.PaymentCreateResponse;

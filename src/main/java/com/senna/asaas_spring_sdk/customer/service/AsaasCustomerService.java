@@ -100,7 +100,7 @@ public class AsaasCustomerService {
      * Remove a single customer by calling the '/customers/{id}' route.
      *
      * @param customerId Cliente Id | Customer Id (String.class).
-     * @return Status do delete | Delete status (AsaasRemoveResponse.class)
+     * @return Status do delete | Delete status (AsaasRemoveResponse.class).
      */
     public Mono<AsaasRemoveResponse> remove(String customerId) {
         return asaasWebClient.delete("/customers/" + customerId, AsaasRemoveResponse.class);
@@ -122,10 +122,10 @@ public class AsaasCustomerService {
 
     /**
      * [PT-BR]
-     * Retorna todas as notificações do cliente chamando a rota '/customers/{id}/notifications'
+     * Retorna todas as notificações do cliente chamando a rota '/customers/{id}/notifications'.
      * |
      * [EN]
-     * Returns all notifications from the customer calling the '/customers/{id}/notifications' route
+     * Returns all notifications from the customer calling the '/customers/{id}/notifications' route.
      *
      * @param customerId Cliente Id (String.class).
      * @return Notificações do Cliente (AsaasCustomerNotifications.class).
