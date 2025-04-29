@@ -3,21 +3,34 @@ package com.senna.asaas_spring_sdk.credit_card.dto;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+/**
+ * Informações do cartão de crédito | Credit card information
+ */
 @Data
 public class AsaasCreditCard {
 
-        @NotBlank(message = "Holder name is required")
+        /**
+         * Nome impresso no cartão | Name printed on card
+         */
         String holderName;
 
-        @NotBlank(message = "Number is required")
+        /**
+         * Número do cartão | Card number
+         */
         String number;
 
-        @NotBlank(message = "Expiry month is required")
+        /**
+         * Mês de expiração com 2 dígitos | Expiration month with 2 digits
+         */
         String expiryMonth;
 
-        @NotBlank(message = "Expiry Year is required")
+        /**
+         * Ano de expiração com 4 dígitos | Expiration year with 4 digits
+         */
         String expiryYear;
 
-        @NotBlank(message = "CCV is required")
+        /**
+         * Código de segurança | Security code
+         */
         String ccv;
 }
