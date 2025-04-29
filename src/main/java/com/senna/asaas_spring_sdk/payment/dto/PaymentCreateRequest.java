@@ -1,7 +1,7 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCardRequest;
+import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCard;
 import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCardHolderInfo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -38,7 +38,7 @@ public class PaymentCreateRequest {
    Boolean postalService;
    List<PaymentSplit> split;
    PaymentCallback callback;
-   AsaasCreditCardRequest creditCard;
+   AsaasCreditCard creditCard;
    AsaasCreditCardHolderInfo creditCardHolderInfo;
    String creditCardToken;
    Boolean authorizeOnly;

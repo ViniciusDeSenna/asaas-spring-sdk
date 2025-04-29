@@ -7,5 +7,8 @@ import lombok.Data;
  */
 @Data
 public class AsaasCustomerGroup {
+    /**
+     * Nome | Name
+     */
     String name;
 }

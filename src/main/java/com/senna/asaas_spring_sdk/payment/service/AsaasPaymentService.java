@@ -14,19 +14,7 @@ public class AsaasPaymentService {
     @Autowired
     AsaasWebClient asaasWebClient;
 
-    public Mono<AsaasApiResponse<PaymentCreateResponse>> createNewPayment(PaymentCreateRequest request) {
-        return asaasWebClient.getClient()
-                .post()
-                .uri("/payments")
-                .bodyValue(request)
-                .retrieve()
-                .onStatus(HttpStatusCode::is4xxClientError, clientResponse ->
-                        clientResponse.bodyToMono(String.class)
-                                .flatMap(body -> {
-                                    return Mono.error(new RuntimeException("Erro 4xx: " + body));
-                                })
-                )
-                .bodyToMono(PaymentCreateResponse.class)
-                .map(AsaasApiResponse::success);
+    public Mono<PaymentCreateResponse> createNewPayment(PaymentCreateRequest request) {
+        //
     }
 }

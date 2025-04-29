@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class AsaasCreditCardTokenRequest {
         String customer;
-        AsaasCreditCardRequest creditCard;
+        AsaasCreditCard creditCard;
         AsaasCreditCardHolderInfo creditCardHolderInfo;
         String remoteIp;
 }

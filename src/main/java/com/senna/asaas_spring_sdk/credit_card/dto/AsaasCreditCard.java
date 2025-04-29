@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class AsaasCreditCardRequest {
+public class AsaasCreditCard {
 
         @NotBlank(message = "Holder name is required")
         String holderName;
