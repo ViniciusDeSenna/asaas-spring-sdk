@@ -1,11 +1,13 @@
 package com.senna.asaas_spring_sdk.customer.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 /**
  * Classe de filtro para listar os clientes | Filter class to list customers
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AsaasCustomerListQuery {
 
     public AsaasCustomerListQuery(Integer offset, Integer limit, String name, String email, String cpfCnpj, String groupName, String externalReference) {

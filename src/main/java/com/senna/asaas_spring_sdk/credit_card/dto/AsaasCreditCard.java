@@ -1,5 +1,6 @@
 package com.senna.asaas_spring_sdk.credit_card.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -7,6 +8,7 @@ import lombok.Data;
  * Informações do cartão de crédito | Credit card information
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AsaasCreditCard {
 
         /**

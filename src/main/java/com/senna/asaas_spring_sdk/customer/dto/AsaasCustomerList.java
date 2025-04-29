@@ -1,5 +1,6 @@
 package com.senna.asaas_spring_sdk.customer.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
  * Lista com todos os clientes | List with all customers
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AsaasCustomerList {
     /**
      * Tipo de objeto | Object type

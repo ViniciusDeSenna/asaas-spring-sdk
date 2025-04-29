@@ -1,11 +1,13 @@
 package com.senna.asaas_spring_sdk.credit_card.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 /**
  * Request para receber o ‘token’ do cartão | Request to receive the card token
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AsaasCreditCardTokenRequest {
         /**
          * Identificador único do cliente no Asaas | Unique customer identifier in Asaas

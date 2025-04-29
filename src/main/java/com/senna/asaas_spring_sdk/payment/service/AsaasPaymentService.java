@@ -1,10 +1,9 @@
 package com.senna.asaas_spring_sdk.payment.service;
 
 import com.senna.asaas_spring_sdk.AsaasWebClient;
-import com.senna.asaas_spring_sdk.payment.dto.PaymentCreateRequest;
-import com.senna.asaas_spring_sdk.payment.dto.PaymentCreateResponse;
+import com.senna.asaas_spring_sdk.payment.dto.AsaasPaymentCreateRequest;
+import com.senna.asaas_spring_sdk.payment.dto.AsaasPayment;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -14,7 +13,17 @@ public class AsaasPaymentService {
     @Autowired
     AsaasWebClient asaasWebClient;
 
-    public Mono<PaymentCreateResponse> createNewPayment(PaymentCreateRequest request) {
-        //
+    /**
+     * [PT-BR]
+     * Cria uma nova cobrança chamando a rota '/payments'.
+     * |
+     * [EN]
+     * Creates a new payment by calling the '/payments' route.
+     *
+     * @param request Corpo da requisição | Request Body - (PaymentCreateRequest.class)
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> create(AsaasPaymentCreateRequest request) {
+        return asaasWebClient.post("/payments", request, AsaasPayment.class);
     }
 }

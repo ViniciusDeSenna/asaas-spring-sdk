@@ -1,5 +1,6 @@
 package com.senna.asaas_spring_sdk.customer.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
  * Objeto informando a consulta e listando todas as notificações do cliente | Object reporting the query and listing all client notifications
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AsaasCustomerNotifications {
     /**
      * Tipo de objeto | Object type

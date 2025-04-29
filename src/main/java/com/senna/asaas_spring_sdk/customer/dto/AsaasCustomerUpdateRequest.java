@@ -1,8 +1,10 @@
 package com.senna.asaas_spring_sdk.customer.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AsaasCustomerUpdateRequest {
     /**
      * Nome do cliente | Customer name
