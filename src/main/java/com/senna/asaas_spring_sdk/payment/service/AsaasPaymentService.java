@@ -6,15 +6,14 @@ import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCardHolderInfo;
 import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerList;
 import com.senna.asaas_spring_sdk.global_dtos.AsaasRemoveResponse;
 import com.senna.asaas_spring_sdk.payment.dto.*;
+import com.senna.asaas_spring_sdk.payment.enums.AsaasBillingType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class AsaasPaymentService {
@@ -302,5 +301,72 @@ public class AsaasPaymentService {
         request.put("notifyCustomer", notifyCustomer );
 
         return asaasWebClient.post("/payments/" + paymentId + "/receiveInCash", request, AsaasPayment.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Desfazer confirmação de recebimento em dinheiro
+     * |
+     * [EN]
+     * Undo cash receipt confirmation
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> undoCashReceiptConfirmation(String paymentId) {
+        return asaasWebClient.post("/payments/" + paymentId + "/undoReceivedInCash", AsaasPayment.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Simulador de vendas
+     * |
+     * [EN]
+     * Sales simulator
+     *
+     * @param value Valor total do parcelamento ou da cobrança | Total installment or billing amount - (BigDecimal.class).
+     * @param installmentCount Quantidade de parcelas | Number of installments - (Integer.class).
+     * @param billingTypes Forma de pagamento | Form of payment - (List<AsaasBillingType.class>).
+     * @return Retorno da API | API return - (AsaasPaymentSalesSimulator.class)
+     */
+    public Mono<AsaasPaymentSalesSimulator> salesSimulator(BigDecimal value, Integer installmentCount, List<AsaasBillingType> billingTypes) {
+
+        List<String> billingTypesString = billingTypes.stream()
+                .map(Enum::name)
+                .collect(Collectors.toList());
+
+        Map<String, Object> request = new HashMap<>();
+        request.put("value", value);
+        request.put("installmentCount", installmentCount );
+        request.put("billingTypes", billingTypesString );
+
+        return asaasWebClient.post("/payments/simulate", request, AsaasPaymentSalesSimulator.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Recuperar garantia da cobrança na Conta Escrow
+     * |
+     * [EN]
+     * Retrieve payment escrow in the Escrow Account
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPaymentSalesSimulator.class)
+     */
+    public Mono<AsaasPaymentEscrow> paymentEscrow(String paymentId) {
+        return asaasWebClient.post("/payments/" + paymentId + "/escrow", AsaasPaymentEscrow.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Recuperando limites de cobranças
+     * |
+     * [EN]
+     * Recovering payment limits
+     *
+     * @return Retorno da API | API return - (AsaasPaymentSalesSimulator.class)
+     */
+    public Mono<AsaasPaymentCreation> paymentLimits() {
+        return asaasWebClient.get("/payments/limits", AsaasPaymentCreation.class)
     }
 }
