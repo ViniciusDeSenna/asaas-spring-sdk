@@ -13,7 +13,27 @@ A lightweight and easy-to-use Java SDK for integrating with the Asaas API using 
 ## Rotas implementadas | Implemented routes:
 
 ### Cobranças | Payments
-✅ Criar nova cobrança | Create new payment
+✅ Criar nova cobrança | Create new payment \
+✅ Listar cobranças | List payments \
+✅ Criar cobrança com cartão de crédito | Create new payment with credit card \
+✅ Capturar cobrança com Pré-Autorização | Capture payment with Pre-Authorization \
+✅ Pagar uma cobrança com cartão de crédito | Pay a charge with a credit card \
+✅ Recuperar informações de pagamento de uma cobrança | Retrieve payment billing information \
+✅ Informações sobre visualização da cobrança | Payment viewing information \
+✅ Recuperar uma única cobrança | Retrieve a single payment \
+✅ Atualizar cobrança existente | Update existing payment \
+✅ Excluir cobrança | Delete payment \
+✅ Restaurar cobrança removida | Restore removed payment \
+✅ Recuperar status de uma cobrança | Retrieve status of a payment \
+✅ Reembolsar cobrança | Refund payment
+✅ Obter linha digitável do boleto | Get digitable bill line \
+✅ Obter QR Code para pagamentos via Pix | Get QR Code for Pix payments \
+✅ Confirmar recebimento em dinheiro | Confirm cash receipt \
+✅ Desfazer confirmação de recebimento em dinheiro | Undo cash receipt confirmation \
+✅ Simulador de vendas | Sales simulator \
+✅ Recuperar garantia da cobrança na Conta Escrow | Retrieve payment escrow in the Escrow Account \
+✅ Recuperando limites de cobranças | Recovering payment limits \
+
 
 ### Cartão de Crédito | Credit Card
 ✅ Tokenização de cartão de crédito | Credit card tokenization
@@ -25,4 +45,4 @@ A lightweight and easy-to-use Java SDK for integrating with the Asaas API using 
 ✅ Atualizar cliente existente | Update existing customer \
 ✅ Remover cliente | Remove Customer \
 ✅ Restaurar cliente removido | Restore removed customer \
-✅ Recuperar notificações de um cliente | Retrieve notifications from a customer
+✅ Recuperar notificações de um cliente | Retrieve notifications from a customer \
