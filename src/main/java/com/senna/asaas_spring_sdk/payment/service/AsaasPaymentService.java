@@ -1,6 +1,8 @@
 package com.senna.asaas_spring_sdk.payment.service;
 
 import com.senna.asaas_spring_sdk.AsaasWebClient;
+import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCard;
+import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCardHolderInfo;
 import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerList;
 import com.senna.asaas_spring_sdk.payment.dto.AsaasPaymentCreateRequest;
 import com.senna.asaas_spring_sdk.payment.dto.AsaasPayment;
@@ -10,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -86,5 +90,45 @@ public class AsaasPaymentService {
      */
     public Mono<AsaasPayment> capturePreAuthorizationPayment(String paymentId) {
         return asaasWebClient.post("/payments/" + paymentId + "/captureAuthorizedPayment", AsaasPayment.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Este endpoint paga uma cobrança com o cartão de crédito informado na hora que você chamá-lo. Caso você tenha o cartão em forma de token você pode usar a função payWithCreditCard passando apenas o token.
+     * |
+     * [EN]
+     * This endpoint processes a payment for a billing using the credit card provided at the time you call it. If you have the card in token form, you can use the payWithCreditCard function, passing only the token.
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class)
+     * @param creditCard Informações do cartão de crédito | Credit card information - (AsaasCreditCard.class)
+     * @param creditCardHolderInfo Informações do titular do cartão de crédito | Credit card holder information - (AsaasCreditCardHolderInfo.class)
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> payWithCreditCard(String paymentId, AsaasCreditCard creditCard, AsaasCreditCardHolderInfo creditCardHolderInfo) {
+
+        Map<String, Object> request = new HashMap<>();
+        request.put("creditCard", creditCard);
+        request.put("creditCardHolderInfo", creditCardHolderInfo);
+
+        return asaasWebClient.post("/payments/" + paymentId + "/payWithCreditCard", request, AsaasPayment.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Este endpoint paga uma cobrança com o cartão de crédito informado na hora que você chamá-lo.
+     * |
+     * [EN]
+     * This endpoint processes a payment for a billing using the credit card provided at the time you call it.
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @param creditCardToken Token do cartão de crédito para uso da funcionalidade de tokenização de cartão de crédito. | Credit card token for using the credit card tokenization functionality. - (String.class)
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> payWithCreditCard(String paymentId, String creditCardToken) {
+
+        Map<String, Object> request = new HashMap<>();
+        request.put("creditCardToken", creditCardToken );
+
+        return asaasWebClient.post("/payments/" + paymentId + "/payWithCreditCard", request, AsaasPayment.class);
     }
 }
