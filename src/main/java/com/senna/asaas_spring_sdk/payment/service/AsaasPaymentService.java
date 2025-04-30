@@ -73,4 +73,18 @@ public class AsaasPaymentService {
                 AsaasPaymentList.class
         );
     }
+
+    /**
+     * [PT-BR]
+     * Para capturar uma cobrança de cartão de crédito criada com Pré-Autorização, é necessário que você tenha o ID retornado no momento da criação da cobrança e que o status da cobrança seja AUTHORIZED.
+     * |
+     * [EN]
+     * To capture a credit card billing created with Pre-Authorization, you need to have the ID returned at the time of billing creation and ensure that the billing status is AUTHORIZED.
+     *
+     * @param paymentId Id da cobrança | Payment id - (String.class)
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> capturePreAuthorizationPayment(String paymentId) {
+        return asaasWebClient.post("/payments/" + paymentId + "/captureAuthorizedPayment", AsaasPayment.class);
+    }
 }
