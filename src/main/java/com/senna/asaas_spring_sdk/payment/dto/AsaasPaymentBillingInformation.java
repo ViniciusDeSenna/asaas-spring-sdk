@@ -21,5 +21,5 @@ public class AsaasPaymentBillingInformation {
     /**
      * Dados do pagamento relacionados a boleto | Payment data related to bank slip
      */
-    AsaasBankSlipSummary bankSlip;
+    AsaasPaymentBankSlipSummary bankSlip;
 }

@@ -8,7 +8,7 @@ import lombok.Data;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AsaasBankSlipSummary {
+public class AsaasPaymentBankSlipSummary {
     /**
      * Linha digitável do boleto | Digitable bill line
      */

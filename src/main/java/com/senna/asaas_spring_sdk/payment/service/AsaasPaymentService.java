@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -228,5 +229,40 @@ public class AsaasPaymentService {
      */
     public Mono<AsaasPaymentStatus> statusOfAPayment(String paymentId) {
         return asaasWebClient.get("/payments/" + paymentId + "/status", AsaasPaymentStatus.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Reembolsar cobrança
+     * |
+     * [EN]
+     * Refund payment
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @param value Valor do reembolso | Amount to be refunded - (String.class).
+     * @param description Motivo do reembolso | Reason for the refund - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> statusOfAPayment(String paymentId, BigDecimal value, String description) {
+
+        Map<String, Object> request = new HashMap<>();
+        request.put("value", value );
+        request.put("description", description );
+
+        return asaasWebClient.post("/payments/" + paymentId + "/refund", request,  AsaasPayment.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Obter linha digitável do boleto
+     * |
+     * [EN]
+     * Get digitable bill line
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPaymentBankSlipSummary> getDigitableBillLine(String paymentId) {
+        return asaasWebClient.get("/payments/" + paymentId + "/identificationField", AsaasPaymentBankSlipSummary.class);
     }
 }
