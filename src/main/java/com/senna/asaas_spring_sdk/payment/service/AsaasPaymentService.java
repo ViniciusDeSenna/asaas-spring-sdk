@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -264,5 +265,42 @@ public class AsaasPaymentService {
      */
     public Mono<AsaasPaymentBankSlipSummary> getDigitableBillLine(String paymentId) {
         return asaasWebClient.get("/payments/" + paymentId + "/identificationField", AsaasPaymentBankSlipSummary.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Pega o QR Code Pix da cobrança
+     * |
+     * [EN]
+     * Get QR Code for Pix payments
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPaymentPixSummary> getQRCodePixPayments(String paymentId) {
+        return asaasWebClient.get("/payments/" + paymentId + "/pixQrCode", AsaasPaymentPixSummary.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Confirmar recebimento em dinheiro
+     * |
+     * [EN]
+     * Confirm cash receipt
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @param paymentDate Data em que o cliente efetuou o pagamento | Date the customer made the payment - (Date.class).
+     * @param value Valor pago pelo cliente | Amount paid by the customer - (BigDecimal.class).
+     * @param notifyCustomer Enviar ou não notificação de pagamento confirmado para o cliente | Send or not send notification of confirmed payment to the customer - (Boolean.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> confirmCashReceipt(String paymentId, Date paymentDate, BigDecimal value, Boolean notifyCustomer) {
+
+        Map<String, Object> request = new HashMap<>();
+        request.put("paymentDate", paymentDate.toString());
+        request.put("value", value );
+        request.put("notifyCustomer", notifyCustomer );
+
+        return asaasWebClient.post("/payments/" + paymentId + "/receiveInCash", request, AsaasPayment.class);
     }
 }
