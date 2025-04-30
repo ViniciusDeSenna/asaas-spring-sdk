@@ -4,6 +4,7 @@ import com.senna.asaas_spring_sdk.AsaasWebClient;
 import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCard;
 import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCardHolderInfo;
 import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerList;
+import com.senna.asaas_spring_sdk.global_dtos.AsaasRemoveResponse;
 import com.senna.asaas_spring_sdk.payment.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -154,6 +155,49 @@ public class AsaasPaymentService {
      * @return Retorno da API | API return - (AsaasPayment.class)
      */
     public Mono<AsaasPaymentViewingInformation> paymentViewingInformation(String paymentId) {
-        return asaasWebClient.get("/payments/" + paymentId + "/billingInfo", AsaasPaymentViewingInformation.class);
+        return asaasWebClient.get("/payments/" + paymentId + "/viewingInfo", AsaasPaymentViewingInformation.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Recuperar uma única cobrança. Para recuperar uma cobrança específica é necessário que você tenha o ID que o Asaas retornou no momento da criação dela.
+     * |
+     * [EN]
+     * Retrieve a single payment. To retrieve a specific charge, you need to have the ID that Asaas returned when it was created.
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> getPayment(String paymentId) {
+        return asaasWebClient.get("/payments/" + paymentId, AsaasPayment.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Atualizar cobrança existente. Somente é possível atualizar cobranças aguardando pagamento ou vencidas. Uma vez criada, não é possível alterar o cliente ao qual a cobrança pertence.
+     * |
+     * [EN]
+     * Update existing payment. It is only possible to update billings that are pending payment or overdue. Once created, it is not possible to change the customer to which the billing belongs.
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @param request Cobraça atualizada | Updated payment - (AsaasPaymentUpdateRequest.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> updatePayment(String paymentId, AsaasPaymentUpdateRequest request) {
+        return asaasWebClient.put("/payments/" + paymentId, request, AsaasPayment.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Excluir cobrança
+     * |
+     * [EN]
+     * Delete payment
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasRemoveResponse> deletePayment(String paymentId) {
+        return asaasWebClient.delete("/payments/" + paymentId, AsaasRemoveResponse.class);
     }
 }
