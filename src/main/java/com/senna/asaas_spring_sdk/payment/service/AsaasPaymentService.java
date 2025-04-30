@@ -200,4 +200,20 @@ public class AsaasPaymentService {
     public Mono<AsaasRemoveResponse> deletePayment(String paymentId) {
         return asaasWebClient.delete("/payments/" + paymentId, AsaasRemoveResponse.class);
     }
+
+    /**
+     * [PT-BR]
+     * Restaurar cobrança excluida
+     * |
+     * [EN]
+     * Restore removed payment
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPayment> restorePayment(String paymentId) {
+        return asaasWebClient.delete("/payments/" + paymentId + "/restore", AsaasPayment.class);
+    }
+
+    
 }
