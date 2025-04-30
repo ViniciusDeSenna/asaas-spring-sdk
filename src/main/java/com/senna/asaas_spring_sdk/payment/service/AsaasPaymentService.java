@@ -142,4 +142,18 @@ public class AsaasPaymentService {
     public Mono<AsaasPaymentBillingInformation> paymentBillingInformation(String paymentId) {
         return asaasWebClient.get("/payments/" + paymentId + "/billingInfo", AsaasPaymentBillingInformation.class);
     }
+
+    /**
+     * [PT-BR]
+     * Recuperar informações sobre visualização da cobrança
+     * |
+     * [EN]
+     * Retrieve payment viewing information
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPaymentViewingInformation> paymentViewingInformation(String paymentId) {
+        return asaasWebClient.get("/payments/" + paymentId + "/billingInfo", AsaasPaymentViewingInformation.class);
+    }
 }
