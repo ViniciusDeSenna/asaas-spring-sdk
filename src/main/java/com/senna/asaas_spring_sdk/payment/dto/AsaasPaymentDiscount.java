@@ -1,7 +1,7 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.senna.asaas_spring_sdk.payment.enums.DiscountType;
+import com.senna.asaas_spring_sdk.payment.enums.AsaasDiscountType;
 import lombok.Data;
 
 
@@ -26,5 +26,5 @@ public class AsaasPaymentDiscount {
     /**
      * Tipo de desconto | Discount type
      */
-    DiscountType type;
+    AsaasDiscountType type;
 }

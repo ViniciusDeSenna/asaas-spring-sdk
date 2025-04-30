@@ -1,7 +1,7 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.senna.asaas_spring_sdk.payment.enums.FineType;
+import com.senna.asaas_spring_sdk.payment.enums.AsaasFineType;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -19,5 +19,5 @@ public class AsaasPaymentFine {
     /**
      * Tipo de multa | Fine type
      */
-    FineType type;
+    AsaasFineType type;
 }

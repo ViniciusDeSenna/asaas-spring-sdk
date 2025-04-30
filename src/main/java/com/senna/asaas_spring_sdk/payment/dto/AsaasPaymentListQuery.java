@@ -1,7 +1,7 @@
 package com.senna.asaas_spring_sdk.payment.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.senna.asaas_spring_sdk.payment.enums.InvoiceStatus;
+import com.senna.asaas_spring_sdk.payment.enums.AsaasInvoiceStatus;
 import lombok.Data;
 
 /**
@@ -64,7 +64,7 @@ public class AsaasPaymentListQuery {
     /**
      * Filtro para retornar cobranças que possuem ou não nota fiscal | Filter to return charges that have or do not have an invoice
      */
-    InvoiceStatus invoiceStatus;
+    AsaasInvoiceStatus invoiceStatus;
 
     /**
      * Filtrar pela data estimada de crédito | Filter by estimated credit date

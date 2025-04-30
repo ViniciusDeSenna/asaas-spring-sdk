@@ -215,5 +215,18 @@ public class AsaasPaymentService {
         return asaasWebClient.delete("/payments/" + paymentId + "/restore", AsaasPayment.class);
     }
 
-    
+
+    /**
+     * [PT-BR]
+     * Retorna o status da cobrança
+     * |
+     * [EN]
+     * Retrieve status of a payment
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPaymentStatus> statusOfAPayment(String paymentId) {
+        return asaasWebClient.get("/payments/" + paymentId + "/status", AsaasPaymentStatus.class);
+    }
 }
