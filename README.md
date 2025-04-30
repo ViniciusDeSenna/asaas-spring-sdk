@@ -25,7 +25,7 @@ A lightweight and easy-to-use Java SDK for integrating with the Asaas API using 
 ✅ Excluir cobrança | Delete payment \
 ✅ Restaurar cobrança removida | Restore removed payment \
 ✅ Recuperar status de uma cobrança | Retrieve status of a payment \
-✅ Reembolsar cobrança | Refund payment
+✅ Reembolsar cobrança | Refund payment \
 ✅ Obter linha digitável do boleto | Get digitable bill line \
 ✅ Obter QR Code para pagamentos via Pix | Get QR Code for Pix payments \
 ✅ Confirmar recebimento em dinheiro | Confirm cash receipt \
