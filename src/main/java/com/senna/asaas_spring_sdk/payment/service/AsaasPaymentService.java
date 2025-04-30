@@ -4,10 +4,7 @@ import com.senna.asaas_spring_sdk.AsaasWebClient;
 import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCard;
 import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCardHolderInfo;
 import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerList;
-import com.senna.asaas_spring_sdk.payment.dto.AsaasPaymentCreateRequest;
-import com.senna.asaas_spring_sdk.payment.dto.AsaasPayment;
-import com.senna.asaas_spring_sdk.payment.dto.AsaasPaymentList;
-import com.senna.asaas_spring_sdk.payment.dto.AsaasPaymentListQuery;
+import com.senna.asaas_spring_sdk.payment.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -130,5 +127,19 @@ public class AsaasPaymentService {
         request.put("creditCardToken", creditCardToken );
 
         return asaasWebClient.post("/payments/" + paymentId + "/payWithCreditCard", request, AsaasPayment.class);
+    }
+
+    /**
+     * [PT-BR]
+     * Recuperar informações de pagamento de uma cobrança
+     * |
+     * [EN]
+     * Retrieve payment billing information
+     *
+     * @param paymentId Identificador único da cobrança no Asaas | Unique payment identifier in Asaas - (String.class).
+     * @return Retorno da API | API return - (AsaasPayment.class)
+     */
+    public Mono<AsaasPaymentBillingInformation> paymentBillingInformation(String paymentId) {
+        return asaasWebClient.get("/payments/" + paymentId + "/billingInfo", AsaasPaymentBillingInformation.class);
     }
 }
