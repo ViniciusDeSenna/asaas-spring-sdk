@@ -367,6 +367,6 @@ public class AsaasPaymentService {
      * @return Retorno da API | API return - (AsaasPaymentSalesSimulator.class)
      */
     public Mono<AsaasPaymentCreation> paymentLimits() {
-        return asaasWebClient.get("/payments/limits", AsaasPaymentCreation.class)
+        return asaasWebClient.get("/payments/limits", AsaasPaymentCreation.class);
     }
 }
