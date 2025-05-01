@@ -1,6 +1,7 @@
 package com.senna.asaas_spring_sdk;
 
 import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomer;
+import com.senna.asaas_spring_sdk.exceptions.AsaasException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
@@ -50,7 +51,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .map(body -> new RuntimeException("Erro da API: " + body))
+                                .map(body -> new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body))
                 )
                 .bodyToMono(responseType);
     };
@@ -74,7 +75,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .map(body -> new RuntimeException("Erro da API: " + body))
+                                .map(body -> new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body))
                 )
                 .bodyToMono(responseType);
     };
@@ -98,7 +99,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .map(body -> new RuntimeException("Erro da API: " + body))
+                                .map(body -> new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body))
                 )
                 .bodyToMono(responseType);
     };
@@ -120,6 +121,10 @@ public class AsaasWebClient {
                 .get()
                 .uri(uriFunction)
                 .retrieve()
+                .onStatus(HttpStatusCode::isError, response ->
+                        response.bodyToMono(String.class)
+                                .map(body -> new AsaasException("Erro ao chamar o Asaas em " + uriFunction.toString(), response.statusCode().value(), body))
+                )
                 .bodyToMono(responseType);
     }
 
@@ -143,7 +148,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .map(body -> new RuntimeException("Erro da API: " + body))
+                                .map(body -> new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body))
                 )
                 .bodyToMono(responseType);
     };
@@ -167,7 +172,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .map(body -> new RuntimeException("Erro da API: " + body))
+                                .map(body -> new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body))
                 )
                 .bodyToMono(responseType);
     }
