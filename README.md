@@ -1,56 +1,84 @@
+# asaas-spring-sdk
+A lightweight and easy-to-use Java SDK for integrating with the Asaas API using Spring Boot.  This SDK abstracts common operations like customer management, billing, and subscriptions, making it easier to integrate Asaas into your Java or Spring-based applications.
+
 ![AsaasSpringSDK-Banner-min](https://github.com/user-attachments/assets/6887ca76-f431-4a16-8fcc-3fdd44977e62)
 
-# asaas-spring-sdk!
+🔄 Este README está disponível em [Português 🇧🇷](README.pt-br.md)
 
-[PT-BR]
+🔗 [Official Asaas documentation 💙](https://docs.asaas.com/)
 
-Um SDK Java leve e fácil de usar para integração com a API Asaas usando o Spring Boot. Este SDK abstrai operações comuns como gerenciamento de clientes, faturamento e assinaturas, facilitando a integração do Asaas em seus aplicativos Java ou Spring.
+## Implemented routes:
 
-[EN]
+### Payments
+✅ Create new payment \
+✅ List payments \
+✅ Create new payment with credit card \
+✅ Capture payment with Pre-Authorization \
+✅ Pay a charge with a credit card \
+✅ Retrieve payment billing information \
+✅ Payment viewing information \
+✅ Retrieve a single payment \
+✅ Update existing payment \
+✅ Delete payment \
+✅ Restore removed payment \
+✅ Retrieve status of a payment \
+✅ Refund payment \
+✅ Get digitable bill line \
+✅ Get QR Code for Pix payments \
+✅ Confirm cash receipt \
+✅ Undo cash receipt confirmation \
+✅ Sales simulator \
+✅ Retrieve payment escrow in the Escrow Account \
+✅ Recovering payment limits 
 
-A lightweight and easy-to-use Java SDK for integrating with the Asaas API using Spring Boot.  This SDK abstracts common operations like customer management, billing, and subscriptions, making it easier to integrate Asaas into your Java or Spring-based applications.
+
+### Credit Card
+✅ Credit card tokenization
+
+### Customers
+✅ Create new customer \
+✅ List customers \
+✅ Retrieve a single customer \
+✅ Update existing customer \
+✅ Remove Customer \
+✅ Restore removed customer \
+✅ Retrieve notifications from a customer
 
 ---
 
-## Rotas implementadas | Implemented routes:
+## Installation
 
-### Cobranças | Payments
-| Status | PT-BR | EN |
-|--------|-------|----|
-|✅| Criar nova cobrança | Create new payment
-|✅| Listar cobranças    | List payments
-|✅| Criar cobrança com cartão de crédito | Create new payment with credit card
-|✅| Capturar cobrança com Pré-Autorização | Capture payment with Pre-Authorization
-|✅| Pagar uma cobrança com cartão de crédito | Pay a charge with a credit card
-|✅| Recuperar informações de pagamento de uma cobrança | Retrieve payment billing information
-|✅| Informações sobre visualização da cobrança | Payment viewing information
-|✅| Recuperar uma única cobrança | Retrieve a single payment
-|✅| Atualizar cobrança existente | Update existing payment
-|✅| Excluir cobrança | Delete payment
-|✅| Restaurar cobrança removida | Restore removed payment
-|✅| Recuperar status de uma cobrança | Retrieve status of a payment
-|✅| Reembolsar cobrança | Refund payment
-|✅| Obter linha digitável do boleto | Get digitable bill line
-|✅| Obter QR Code para pagamentos via Pix | Get QR Code for Pix payments
-|✅| Confirmar recebimento em dinheiro | Confirm cash receipt
-|✅| Desfazer confirmação de recebimento em dinheiro | Undo cash receipt confirmation
-|✅| Simulador de vendas | Sales simulator
-|✅| Recuperar garantia da cobrança na Conta Escrow | Retrieve payment escrow in the Escrow Account
-|✅| Recuperando limites de cobranças | Recovering payment limits
+### Settings
+First you need to have a `settings.xml` with the content below in the `~/.m2/settings.xml` directory \
+🔒 `USERNAME`: GitHub username. \
+🔒 `GITHUB_TOKEN`: Personal Access Token (Personal Access Token with `read:packages` permissions).
+```xml
+<servers>
+    <server>
+        <id>github</id>
+        <username>USERNAME</username>
+        <password>GITHUB_TOKEN</password>
+    </server>
+</servers>
+```
 
+### Repositories
+In your `pom.xml` file add the following sections \
+🆚 `LAST_VERSION`: 🔗 [See the latest version](https://github.com/ViniciusDeSenna/asaas-spring-sdk/packages/2488874) \
+```xml
+<repositories>
+    <repository>
+        <id>github</id>
+        <url>https://maven.pkg.github.com/ViniciusDeSenna/asaas-spring-sdk</url>
+    </repository>
+</repositories>
 
-### Cartão de Crédito | Credit Card
-| Status | PT-BR | EN |
-|--------|-------|----|
-|✅| Tokenização de cartão de crédito | Credit card tokenization
-
-### Clientes | Customers
-| Status | PT-BR | EN |
-|--------|-------|----|
-|✅| Criar novo cliente | Create new customer
-|✅| Listar clientes | List customers
-|✅| Recuperar um único cliente | Retrieve a single customer
-|✅| Atualizar cliente existente | Update existing customer
-|✅| Remover cliente | Remove Customer
-|✅| Restaurar cliente removido | Restore removed customer
-|✅| Recuperar notificações de um cliente | Retrieve notifications from a customer
+<dependencies>
+  ...
+  <dependency>
+      <groupId>com.senna</groupId>
+      <artifactId>asaas-spring-sdk</artifactId>
+      <version>LAST_VERSION</version>
+  </dependency>
+</dependencies>
+```
