@@ -21,6 +21,10 @@ public class AsaasPaymentService {
     @Autowired
     AsaasWebClient asaasWebClient;
 
+    public AsaasPaymentService(AsaasWebClient asaasWebClient) {
+        this.asaasWebClient = asaasWebClient;
+    }
+
     /**
      * [PT-BR]
      * Cria uma nova cobrança chamando a rota '/payments'.
