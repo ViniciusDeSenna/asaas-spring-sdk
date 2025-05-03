@@ -82,3 +82,12 @@ In your `pom.xml` file add the following sections: \
   </dependency>
 </dependencies>
 ```
+
+### Properties
+In your `application.properties` file it is important that you have instantiated the following properties: \
+🔗 `URL` Asaas call url. \
+🔒 `ASAAS_TOKEN` Your Asaas token.
+```properties
+asaas.api.base-url=URL
+asaas.api.token=ASAAS_TOKEN
+```
