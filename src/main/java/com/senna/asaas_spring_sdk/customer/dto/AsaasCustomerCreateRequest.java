@@ -50,26 +50,6 @@ public class AsaasCustomerCreateRequest {
     String province;
 
     /**
-     * Identificador único da cidade no Asaas | Customer address neighborhood
-     */
-    String city;
-
-    /**
-     * Cidade do endereço do cliente | City of customer address
-     */
-    String cityName;
-
-    /**
-     * Estado do endereço do cliente | Customer address status
-     */
-    String state;
-
-    /**
-     * País do cliente | Customer country
-     */
-    String country;
-
-    /**
      * CEP do endereço do cliente | Address zip code
      */
     String postalCode;

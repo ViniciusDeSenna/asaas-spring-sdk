@@ -127,6 +127,17 @@ public class AsaasCustomer {
     String observations;
 
     /**
+     * Inscrição municipal do cliente | Customer municipal registration
+     */
+    String municipalInscription;
+
+
+    /**
+     * Inscrição estadual do cliente | Customer state registration
+     */
+    String stateInscription;
+
+    /**
      * Indica se o pagador é estrangeiro | Indicates if it's non-brazilian customer
      */
     Boolean foreignCustomer;
