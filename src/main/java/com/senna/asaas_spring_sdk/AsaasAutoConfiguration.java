@@ -1,6 +1,5 @@
-package com.senna.asaas_spring_sdk.autoconfig;
+package com.senna.asaas_spring_sdk;
 
-import com.senna.asaas_spring_sdk.AsaasWebClient;
 import com.senna.asaas_spring_sdk.credit_card.service.AsaasCreditCardService;
 import com.senna.asaas_spring_sdk.customer.service.AsaasCustomerService;
 import com.senna.asaas_spring_sdk.payment.service.AsaasPaymentService;

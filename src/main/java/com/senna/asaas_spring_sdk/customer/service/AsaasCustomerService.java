@@ -2,7 +2,7 @@ package com.senna.asaas_spring_sdk.customer.service;
 
 import com.senna.asaas_spring_sdk.AsaasWebClient;
 import com.senna.asaas_spring_sdk.customer.dto.*;
-import com.senna.asaas_spring_sdk.global_dtos.AsaasRemoveResponse;
+import com.senna.asaas_spring_sdk.AsaasRemoveResponse;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 

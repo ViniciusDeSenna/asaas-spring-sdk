@@ -1,6 +1,5 @@
 package com.senna.asaas_spring_sdk;
 
-import com.senna.asaas_spring_sdk.exceptions.AsaasException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatusCode;

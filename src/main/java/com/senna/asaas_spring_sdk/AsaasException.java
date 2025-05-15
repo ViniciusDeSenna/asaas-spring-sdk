@@ -1,4 +1,4 @@
-package com.senna.asaas_spring_sdk.exceptions;
+package com.senna.asaas_spring_sdk;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

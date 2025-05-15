@@ -1,4 +1,4 @@
-package com.senna.asaas_spring_sdk.global_dtos;
+package com.senna.asaas_spring_sdk;
 
 import lombok.Data;
 

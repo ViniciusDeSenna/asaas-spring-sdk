@@ -1,12 +1,13 @@
 package com.senna.asaas_spring_sdk.customer.service;
 
-import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomer;
-import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerCreateRequest;
+import com.senna.asaas_spring_sdk.AsaasRemoveResponse;
+import com.senna.asaas_spring_sdk.customer.dto.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -132,25 +133,73 @@ class AsaasCustomerServiceTest {
 
     @Test
     void list() {
+        AsaasCustomerList customers = asaasCustomerService.list(AsaasCustomerListQuery.builder().build()).block();
+
+        assertNotNull(customers);
+        assertNotNull(customers.getData());
+        assertFalse(customers.getData().isEmpty(), "Data should not be empty.");
+        assertEquals("customer", customers.getData().get(0).getObject());
     }
 
     @Test
     void get() {
+        AsaasCustomer request = Objects.requireNonNull(asaasCustomerService.list(AsaasCustomerListQuery.builder().build()).block()).getData().get(0);
+
+        AsaasCustomer customer = asaasCustomerService.get(request.getId()).block();
+
+        assertNotNull(customer);
+        assertEquals("customer", customer.getObject());
+        assertEquals(request, customer);
     }
 
     @Test
     void update() {
+
+        AsaasCustomer request = Objects.requireNonNull(asaasCustomerService.list(AsaasCustomerListQuery.builder().build()).block()).getData().get(0);
+        request.setName("Teste Update");
+
+        AsaasCustomerUpdateRequest updateRequest = AsaasCustomerUpdateRequest.builder()
+                .name("Teste Update")
+                .build();
+
+        AsaasCustomer customer = asaasCustomerService.update(request.getId(), updateRequest).block();
+
+        assertNotNull(customer);
+        assertEquals("customer", customer.getObject());
+        assertEquals(request, customer);
+
     }
 
     @Test
     void remove() {
+        AsaasCustomer request = Objects.requireNonNull(asaasCustomerService.list(AsaasCustomerListQuery.builder().build()).block()).getData().get(0);
+
+        AsaasRemoveResponse response = asaasCustomerService.remove(request.getId()).block();
+
+        assertNotNull(response);
+        assertEquals(true, response.getDeleted());
+        assertEquals(request.getId(), response.getId());
     }
 
     @Test
     void restore() {
+        AsaasCustomer request = Objects.requireNonNull(asaasCustomerService.list(AsaasCustomerListQuery.builder().build()).block()).getData().get(0);
+
+        AsaasCustomer response = asaasCustomerService.restore(request.getId()).block();
+
+        assertNotNull(response);
+        assertEquals(request, response);
     }
 
     @Test
     void retrieveNotifications() {
+        AsaasCustomer request = Objects.requireNonNull(asaasCustomerService.list(AsaasCustomerListQuery.builder().build()).block()).getData().get(0);
+
+        AsaasCustomerNotifications response = asaasCustomerService.retrieveNotifications(request.getId()).block();
+
+        assertNotNull(response);
+        assertNotNull(response.getData());
+        assertFalse(response.getData().isEmpty());
+        assertEquals("notification", response.getData().get(0).getObject());
     }
 }
