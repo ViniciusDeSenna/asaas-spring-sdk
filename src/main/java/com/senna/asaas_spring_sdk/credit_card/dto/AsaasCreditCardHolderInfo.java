@@ -1,12 +1,14 @@
 package com.senna.asaas_spring_sdk.credit_card.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Builder;
 import lombok.Data;
 
 /**
  * Informações do titular do cartão de crédito | Credit card holder information
  */
 @Data
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AsaasCreditCardHolderInfo {
         /**

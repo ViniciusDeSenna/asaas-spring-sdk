@@ -2,6 +2,7 @@ package com.senna.asaas_spring_sdk;
 
 import com.senna.asaas_spring_sdk.exceptions.AsaasException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -12,10 +13,10 @@ import java.net.URI;
 import java.util.function.Function;
 
 @Component
+@Profile("!test")
 public class AsaasWebClient {
 
     private final WebClient webClient;
-
 
     public AsaasWebClient(@Value("${asaas.api.base-url}") String baseUrl, @Value("${asaas.api.token}") String apiKey) {
         this.webClient = WebClient.builder()

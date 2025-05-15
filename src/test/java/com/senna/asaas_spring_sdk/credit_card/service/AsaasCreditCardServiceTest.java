@@ -1,11 +1,25 @@
 package com.senna.asaas_spring_sdk.credit_card.service;
 
+import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCard;
+import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCardHolderInfo;
+import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCardSummary;
+import com.senna.asaas_spring_sdk.credit_card.dto.AsaasCreditCardTokenRequest;
+import com.senna.asaas_spring_sdk.credit_card.enums.AsaasCreditCardBrands;
+import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomer;
+import com.senna.asaas_spring_sdk.customer.dto.AsaasCustomerListQuery;
 import com.senna.asaas_spring_sdk.customer.service.AsaasCustomerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+import java.time.LocalDate;
+import java.util.Objects;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class AsaasCreditCardServiceTest {
 
     @Autowired
@@ -17,37 +31,38 @@ class AsaasCreditCardServiceTest {
     @Test
     void tokenization() {
 
-        /*
-        AsaasCustomerList customers = asaasCustomerService.list(new AsaasCustomerListQuery(0, 1)).block();
+        AsaasCustomer customer = Objects.requireNonNull(asaasCustomerService.list(AsaasCustomerListQuery.builder().build()).block()).getData().get(0);
 
-        CreditCardRequest creditCardRequest = new CreditCardRequest();
-        creditCardRequest.setHolderName("TESTE USER");
-        creditCardRequest.setNumber("1234567890123456");
-        creditCardRequest.setExpiryMonth("4");
-        creditCardRequest.setExpiryYear("2027");
-        creditCardRequest.setCcv("123");
+        AsaasCreditCard creditCard = AsaasCreditCard.builder()
+                .holderName(customer.getName())
+                .number("12345671234567")
+                .expiryMonth("01")
+                .expiryYear(String.valueOf(LocalDate.now().plusYears(1).getYear()))
+                .ccv("123")
+                .build();
 
-        CreditCardHolderInfo holderInfo = new CreditCardHolderInfo();
-        holderInfo.setName("TESTE USER");
-        holderInfo.setEmail("teste@teste.com");
-        holderInfo.setCpfCnpj("45190135004");
-        holderInfo.setPostalCode("89066361");
-        holderInfo.setAddressNumber("34");
-        holderInfo.setAddressComplement("");
-        holderInfo.setPhone("23434344567");
+        AsaasCreditCardHolderInfo holderInfo = AsaasCreditCardHolderInfo.builder()
+                .name(customer.getName())
+                .email(customer.getEmail())
+                .cpfCnpj(customer.getCpfCnpj())
+                .postalCode(customer.getPostalCode())
+                .addressNumber(customer.getAddressNumber())
+                .addressComplement(customer.getComplement())
+                .phone(customer.getPhone())
+                .mobilePhone(customer.getMobilePhone())
+                .build();
 
-        CreditCardTokenizationRequest request = new CreditCardTokenizationRequest();
-        request.setCustomer(customers.getData().get(0).getId());
-        request.setCreditCard(creditCardRequest);
-        request.setCreditCardHolderInfo(holderInfo);
-        request.setRemoteIp("123");
+        AsaasCreditCardTokenRequest request = AsaasCreditCardTokenRequest.builder()
+                .customer(customer.getId())
+                .creditCard(creditCard)
+                .creditCardHolderInfo(holderInfo)
+                .remoteIp("123")
+                .build();
 
-        CreditCardTokenizationResponse response = asaasCreditCardService.tokenization(request).block();
+        AsaasCreditCardSummary summary = asaasCreditCardService.tokenization(request).block();
 
-        Assertions.assertNotNull(response);
-        Assertions.assertNotNull(response.getCreditCardToken());
-        Assertions.assertEquals("3456", response.getCreditCardNumber());
-
-         */
+        assertNotNull(summary);
+        assertEquals("4567", summary.getCreditCardNumber());
+        assertEquals(AsaasCreditCardBrands.UNKNOWN, summary.getCreditCardBrand());
     }
 }
