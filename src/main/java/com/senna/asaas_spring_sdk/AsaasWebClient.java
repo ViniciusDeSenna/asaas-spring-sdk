@@ -52,7 +52,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body)))
+                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path + ".", response.statusCode().value(), body)))
                 )
                 .bodyToMono(responseType);
     };
@@ -76,7 +76,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body)))
+                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path + ".", response.statusCode().value(), body)))
                 )
                 .bodyToMono(responseType);
     };
@@ -100,7 +100,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body)))
+                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path + ".", response.statusCode().value(), body)))
                 )
                 .bodyToMono(responseType);
     };
@@ -149,7 +149,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body)))
+                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path + ".", response.statusCode().value(), body)))
                 )
                 .bodyToMono(responseType);
     };
@@ -173,7 +173,7 @@ public class AsaasWebClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response ->
                         response.bodyToMono(String.class)
-                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path, response.statusCode().value(), body)))
+                                .flatMap(body -> Mono.error(new AsaasException("Erro ao chamar o Asaas em " + path + ".", response.statusCode().value(), body)))
                 )
                 .bodyToMono(responseType);
     }

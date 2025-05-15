@@ -69,7 +69,7 @@ public class AsaasCustomer {
     /**
      * Identificador único da cidade no Asaas | Customer address neighborhood
      */
-    String city;
+    Integer city;
 
     /**
      * Cidade do endereço do cliente | City of customer address
@@ -137,6 +137,14 @@ public class AsaasCustomer {
      */
     String stateInscription;
 
+    Boolean canDelete;
+
+    String cannotBeDeletedReason;
+
+    Boolean canEdit;
+
+    String cannotEditReason;
+
     /**
      * Indica se o pagador é estrangeiro | Indicates if it's non-brazilian customer
      */
@@ -146,4 +154,6 @@ public class AsaasCustomer {
      * Grupos ao qual o cliente pertence | Groups to which the client belongs
      */
     List<AsaasCustomerGroup> groups;
+
+    String company;
 }
